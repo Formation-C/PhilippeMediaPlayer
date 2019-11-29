@@ -2,6 +2,7 @@
 #include <algorithm>
 
 #include "Player.h"
+#include "State.h"
 
 using namespace std;
 
@@ -20,9 +21,20 @@ int main()
              );
 
     while(input !="exit"){
+//        cout << "playing track: "<<player->Getplaying()+1<< endl;
         cout << "Input command: " ;
         cin >> input;
-        cout << input << endl;
+ //       cout << input << endl;
+
+        if(input == "play"){
+            player->Getstate()->onPlay();
+        }
+        else if(input=="stop"){
+            player->Getstate()->onStop();
+        }
+        else{
+            cout << "unknown command" << endl;
+        }
     }
     cout << "End of Main" << endl;
     return 0;
